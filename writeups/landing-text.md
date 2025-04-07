@@ -1,29 +1,16 @@
-# LANDING PAGE
+# Portfolio
 
-    
-(this would be an introduction, with brief summary of what we did and then how to navigate)
+This website is a rolling portfolio of my work, presented in a carousel that you can navigate with the menu in the bottome left or the arrows on the left and right of the screen (and your keyboard). Each project, whether in-progress or completed, is accompanied by a short summary and links to further information. 
 
-**IMPORTANT** - navigate with the arrow buttons on the left and right of the screen (can use your keyboard arrow keys too), or click 'navigate' to move to a specific case study
+**NOTE - THIS WEBSITE IS ENTIRELY UNDER CONSTRUCTION AND THEREFORE LIMITED AT THE MOMENT**
 
-<!-- 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales ut urna eget feugiat. Vivamus mollis dignissim magna eget vulputate. Nam suscipit ex sed ante hendrerit volutpat. Nullam egestas felis eu facilisis semper. Etiam aliquet elit cursus sem aliquet aliquam. Nam eleifend odio tempus elit dignissim, ac pharetra ex vehicula. Pellentesque sit amet iaculis dui, at scelerisque nunc. Suspendisse et diam ultricies, consequat eros nec, volutpat erat.
+## About Me
+I'm a researcher working at the crossroads of economics, technology, and society with an extensive, award-winning quantitative, qualitative, and computational skillset.
 
-*Nulla in placerat nisi. Vestibulum cursus faucibus neque, quis elementum dolor scelerisque ut. Nullam sed hendrerit risus. Nulla ut erat a nisi feugiat faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam eu neque enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque sit amet mi non sapien laoreet vehicula. Nullam sit amet magna elit. Vivamus pretium elementum tortor. Nulla facilisi. Quisque et neque purus. Phasellus hendrerit orci in orci ornare rutrum. Fusce tempus quis ligula ac gravida. Maecenas eget laoreet enim, a porta dui.*
+Over the past several years, I've dived deep into how individuals, organisations, and societies respond to innovation, disruption, and policy. Currently, I'm a researcher at the Open Data Institute (ODI), where I've worked on understanding trust and transparency in emerging technologies like AI and privacy-enhancing tools. With a BSc in Economics from University College London (2023), my academic background gives me a solid grounding in theory, but I've always preferred working in the real world. That's visible in my work for the ODI, the MLCommons Croissant Working Group, the Centre for digital Public Health in Emergencies and the Department of Economics at UCL, and a number of other projects you can browse on this website.
 
-[Phasellus](https://www.theodi.org) a velit lobortis, mollis mi in, dapibus sapien. Etiam placerat luctus lorem ac accumsan. Nullam eu massa pharetra, aliquam diam eget, ornare leo. Ut ut nisl vehicula, lacinia dui eget, faucibus dui. In aliquam odio id dui dapibus, vitae efficitur neque venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed accumsan rhoncus elit, at faucibus velit fringilla non.
+My technical skillset covers a wide array, from econometrics, statistical modelling, and financial analysis to data science, machine learning, and AI. Python is my primary tool (including AI frameworks like TensorFlow and PyTorch), but I also frequently use Stata, R, and web technologies (HTML, CSS, JavaScript). This flexibility lets me tackle diverse projects, turning complex data into clear, actionable insights and — importantly — serves as a basis for me to analyse tech trends, innovations, uptake, and business viability. 
 
-Vivamus aliquet maximus diam vel condimentum. Morbi faucibus ex mauris, nec cursus metus imperdiet eu. Ut ipsum odio, efficitur rhoncus magna in, venenatis tincidunt tortor. Nam vehicula, augue nec faucibus cursus, tortor lacus lobortis erat, nec mollis nunc eros eu urna. Nunc luctus nec nulla ac cursus. Etiam dui nisi, convallis a aliquam ac, volutpat vel dui. Suspendisse vitae porttitor nunc, eget tempor ipsum. Sed justo tellus, faucibus sed faucibus vitae, aliquet non diam. In scelerisque lacus ipsum, in varius urna tempor ut.
+I think the most important steps in my research projects is their communication, which is a skill that I've cultivated over the years. I've won a national award for journalism and best-paper winning academic work, always striving to clearly and effectively convey complex ideas. Whether I'm explaining the intricacies of privacy technologies at the ODI or exploring behavioural trust dynamics in healthcare settings, I've been able to produce analyses and insights that bring the right points to the right people.
 
-Mauris ut tincidunt turpis. Integer dignissim nisi erat, ut posuere nisl ullamcorper nec. Donec quis semper orci, a ultrices nisi. Morbi sit amet nulla sed ex ultrices volutpat nec id ex. Vivamus sed venenatis lacus. Praesent viverra dolor et molestie mattis. Vestibulum at ante sollicitudin, porta risus a, pharetra nibh.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales ut urna eget feugiat. Vivamus mollis dignissim magna eget vulputate. Nam suscipit ex sed ante hendrerit volutpat. Nullam egestas felis eu facilisis semper. Etiam aliquet elit cursus sem aliquet aliquam. Nam eleifend odio tempus elit dignissim, ac pharetra ex vehicula. Pellentesque sit amet iaculis dui, at scelerisque nunc. Suspendisse et diam ultricies, consequat eros nec, volutpat erat.
-
-Nulla in placerat nisi. Vestibulum cursus faucibus neque, quis elementum dolor scelerisque ut. Nullam sed hendrerit risus. Nulla ut erat a nisi feugiat faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam eu neque enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque sit amet mi non sapien laoreet vehicula. Nullam sit amet magna elit. Vivamus pretium elementum tortor. Nulla facilisi. Quisque et neque purus. Phasellus hendrerit orci in orci ornare rutrum. Fusce tempus quis ligula ac gravida. Maecenas eget laoreet enim, a porta dui.
-
-Phasellus a velit lobortis, mollis mi in, dapibus sapien. Etiam placerat luctus lorem ac accumsan. Nullam eu massa pharetra, aliquam diam eget, ornare leo. Ut ut nisl vehicula, lacinia dui eget, faucibus dui. In aliquam odio id dui dapibus, vitae efficitur neque venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed accumsan rhoncus elit, at faucibus velit fringilla non.
-
-Vivamus aliquet maximus diam vel condimentum. Morbi faucibus ex mauris, nec cursus metus imperdiet eu. Ut ipsum odio, efficitur rhoncus magna in, venenatis tincidunt tortor. Nam vehicula, augue nec faucibus cursus, tortor lacus lobortis erat, nec mollis nunc eros eu urna. Nunc luctus nec nulla ac cursus. Etiam dui nisi, convallis a aliquam ac, volutpat vel dui. Suspendisse vitae porttitor nunc, eget tempor ipsum. Sed justo tellus, faucibus sed faucibus vitae, aliquet non diam. In scelerisque lacus ipsum, in varius urna tempor ut.
-
-Mauris ut tincidunt turpis. Integer dignissim nisi erat, ut posuere nisl ullamcorper nec. Donec quis semper orci, a ultrices nisi. Morbi sit amet nulla sed ex ultrices volutpat nec id ex. Vivamus sed venenatis lacus. Praesent viverra dolor et molestie mattis. Vestibulum at ante sollicitudin, porta risus a, pharetra nibh.
-
-# end -->
+I'm always eager to hear about new opportunities, research, and events. Feel free to get in touch!

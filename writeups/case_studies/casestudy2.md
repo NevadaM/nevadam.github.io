@@ -1,4 +1,4 @@
-# Enabling collaboration in the humanitarian sector with open data
+# Quantitatively measuring the UK Gov. as a data provider for AI
 According to the Centre for Humdata, the [demand for humanitarian data reached a record level in 2023](https://centre.humdata.org/the-state-of-open-humanitarian-data-2024/), due to the effects of climate shocks, food insecurity, war, disease and food security around the world.  
 
 The use of data to support humanitarian crises is not new, but it is a field which has been rapidly evolving over the past 20 years. Access to contextual data about countries, data about crises as they happen and the response of humanitarian action have increased, and there are a network of organisations who have been collecting this data. However, it has often been siloed, making it difficult to paint a clear picture of a crisis and therefore more difficult to respond effectively. 
