@@ -1,4 +1,5 @@
 // initial vars
+var page_limit = 7;
 var page_counter = 0;
 var url = new URL(window.location.href);
 const params = url.searchParams.getAll('page')
@@ -149,7 +150,7 @@ function initializeNextButton() {
       
       setTimeout(() => {
         if (page_counter != 0) {
-          if (page_counter != 15) {
+          if (page_counter != page_limit) {
             current_carouselImage.classList.remove('fade-in');
             current_carouselText.classList.remove('fade-in');
             current_carouselImage.classList.add('fade-out');
@@ -215,8 +216,8 @@ function initializePrevButton() {
       const current_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
       const prev_carouselImage = document.querySelector(`#case-study-${page_counter-1}-image-container`);
       const prev_carouselText = document.querySelector(`#case-study-${page_counter-1}-text-container`);
-      const _15_carouselImage = document.querySelector(`#case-study-15-image-container`);
-      const _15_carouselText = document.querySelector(`#case-study-15-text-container`);
+      const _page_limit_carouselImage = document.querySelector(`#case-study-${page_limit}-image-container`);
+      const _page_limit_carouselText = document.querySelector(`#case-study-${page_limit}-text-container`);
       
       
       setTimeout(() => {
@@ -247,13 +248,13 @@ function initializePrevButton() {
           landingTextContainer.classList.add('fade-out');
           landingTextContainer.classList.remove('fade-in');
           landingTextContainer.classList.add('hidden');
-          _15_carouselImage.classList.add('fade-in');
-          _15_carouselText.classList.add('fade-in');
-          _15_carouselImage.classList.remove('hidden');
-          _15_carouselText.classList.remove('hidden');
-          _15_carouselImage.classList.remove('fade-out');
-          _15_carouselText.classList.remove('fade-out');
-          page_counter = 15;
+          _page_limit_carouselImage.classList.add('fade-in');
+          _page_limit_carouselText.classList.add('fade-in');
+          _page_limit_carouselImage.classList.remove('hidden');
+          _page_limit_carouselText.classList.remove('hidden');
+          _page_limit_carouselImage.classList.remove('fade-out');
+          _page_limit_carouselText.classList.remove('fade-out');
+          page_counter = page_limit;
         }
         url.searchParams.set('page', page_counter);
         window.history.pushState(null, '', url.toString());
@@ -454,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializePrevButton();
   initializeNavButton();
   initializeIndexButton();
-  for (let index = 0; index < 16; index++) {
+  for (let index = 0; index < page_limit+1; index++) {
     initializeSingleNavButton(index)
     
   };
