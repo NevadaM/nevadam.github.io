@@ -382,6 +382,21 @@ img.logo:hover {
   line-height: 1.38rem;
 }
 
+.scrollable-text p strong {
+  color: var(--dark-slate-gray);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.38rem;
+}
+
+
+.scrollable-text th {
+  color: var(--dark-slate-gray);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.38rem;
+}
+
 .scrollable-text a {
   color: var(--dark-slate-gray);
   font-weight: 700;
@@ -427,6 +442,14 @@ figcaption {
   text-align: right;
   font-size: 0.8rem;
   font-style: italic;
+}
+
+table {
+  width: 100%;
+  border-bottom: 1px solid var(--dark-slate-gray);
+  border-top: 1px solid var(--dark-slate-gray);
+  margin-bottom: 2em;
+  margin-top: 2em;
 }
 
 
