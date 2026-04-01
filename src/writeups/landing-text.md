@@ -12,3 +12,5 @@ My technical skillset covers a wide array, from econometrics, statistical modell
 I think the most important steps in my research projects is their communication, which is a skill that I've cultivated over the years. I've won a national award for journalism and best-paper winning academic work, always striving to clearly and effectively convey complex ideas. Whether I'm explaining the intricacies of privacy technologies at the ODI or exploring behavioural trust dynamics in healthcare settings, I've been able to produce analyses and insights that bring the right points to the right people.
 
 I'm always eager to hear about new opportunities, research, and events. Feel free to get in touch!
+
+-Neil (<a>neil.majithia@theodi.org</a>)

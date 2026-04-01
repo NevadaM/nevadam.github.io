@@ -1,5 +1,13 @@
 [
   {
+    "id": 8,
+    "type": "pdf",
+    "src": "https://arxiv.org/pdf/2602.04064#toolbar=1&zoom=80",
+    "markdown": "case_studies/casestudy8.md",
+    "caption": "PDF viewer",
+    "bg": "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg"
+  },
+  {
     "id": 1,
     "type": "pdf",
     "src": "https://theodi.cdn.ngo/media/documents/ODI_Report_-_Trust_and_transparency_in_privacy-enhancing_technologies.pdf#toolbar=1&zoom=50",
@@ -10,7 +18,7 @@
   {
     "id": 2,
     "type": "pdf",
-    "src": "https://theodi.cdn.ngo/media/documents/UK_government_as_data_provider_for_AI.pdf#toolbar=1&zoom=50",
+    "src": "https://theodi.hacdn.io/media/documents/UK_government_as_a_data_provider_for_AI.pdf#toolbar=1&zoom=50",
     "markdown": "case_studies/casestudy2.md",
     "caption": "PDF viewer",
     "bg": "images/case_study_images/casestudy2.avif"
@@ -51,27 +59,11 @@
     "bg": "images/case_study_images/casestudy7.png"
   },
   {
-    "id": 8,
-    "type": "image",
-    "src": "images/case_study_images/casestudy1.avif",
-    "markdown": "case_studies/casestudy8.md",
-    "caption": "CitizenQuery-UK",
-    "bg": "images/case_study_images/casestudy8.jpg"
-  },
-  {
     "id": 9,
-    "type": "image",
-    "src": "images/case_study_images/casestudy2.avif",
+    "type": "pdf",
+    "src": "https://theodi.hacdn.io/media/documents/A_framework_for_AI-ready_data.pdf#toolbar=1&zoom=50",
     "markdown": "case_studies/casestudy9.md",
     "caption": "AI-Ready Data",
-    "bg": "images/case_study_images/casestudy9.jpg"
-  },
-  {
-    "id": 10,
-    "type": "image",
-    "src": "images/case_study_images/casestudy3.png",
-    "markdown": "case_studies/casestudy10.md",
-    "caption": "Croissant Standard",
-    "bg": "images/case_study_images/casestudy10.jpg"
+    "bg": "https://onlinelibrary.wiley.com/cms/asset/efb73990-3098-48e0-9d9b-493f05c5c349/aaai70054-fig-0001-m.jpg"
   }
 ]
