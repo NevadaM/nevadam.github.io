@@ -1,462 +1,236 @@
-// initial vars
-var page_limit = 7;
-var page_counter = 0;
-var url = new URL(window.location.href);
-const params = url.searchParams.getAll('page')
-
-// using query strings to open exact page in a URL, enabling easier sharing
-if (params.length != 0) {
-  if (params[0] == 'nav') {
-    page_counter = 'nav'
-  } else {
-    page_counter = Number(params[0])
+// Centralised configuration for case studies
+const CASE_STUDIES = [
+  {
+    id: 1,
+    type: 'pdf',
+    src: 'https://theodi.cdn.ngo/media/documents/ODI_Report_-_Trust_and_transparency_in_privacy-enhancing_technologies.pdf#toolbar=1&zoom=50',
+    markdown: 'case_studies/casestudy1.md',
+    caption: 'PDF viewer'
+  },
+  {
+    id: 2,
+    type: 'pdf',
+    src: 'https://theodi.cdn.ngo/media/documents/UK_government_as_data_provider_for_AI.pdf#toolbar=1&zoom=50',
+    markdown: 'case_studies/casestudy2.md',
+    caption: 'PDF viewer'
+  },
+  {
+    id: 3,
+    type: 'image',
+    src: 'images/case_study_images/casestudy3.png',
+    markdown: 'case_studies/casestudy3.md'
+  },
+  {
+    id: 4,
+    type: 'image',
+    src: 'images/case_study_images/casestudy4.png',
+    markdown: 'case_studies/casestudy4.md'
+  },
+  {
+    id: 5,
+    type: 'image',
+    src: 'images/case_study_images/casestudy5.png',
+    markdown: 'case_studies/casestudy5.md'
+  },
+  {
+    id: 6,
+    type: 'image',
+    src: 'images/case_study_images/casestudy6.png',
+    markdown: 'case_studies/casestudy6.md'
+  },
+  {
+    id: 7,
+    type: 'image',
+    src: 'images/case_study_images/casestudy7.png',
+    markdown: 'case_studies/casestudy7.md'
+  },
+  {
+    id: 8,
+    type: 'image',
+    src: 'images/case_study_images/casestudy1.avif', // Placeholder
+    markdown: 'case_studies/casestudy8.md',
+    caption: 'CitizenQuery-UK'
+  },
+  {
+    id: 9,
+    type: 'image',
+    src: 'images/case_study_images/casestudy2.avif', // Placeholder
+    markdown: 'case_studies/casestudy9.md',
+    caption: 'AI-Ready Data'
+  },
+  {
+    id: 10,
+    type: 'image',
+    src: 'images/case_study_images/casestudy3.png', // Placeholder
+    markdown: 'case_studies/casestudy10.md',
+    caption: 'Croissant Standard'
   }
-  navigateToPageCount(page_counter)
-} else {
-  url.searchParams.set('page', page_counter);
-  window.history.pushState(null, '', url.toString());
+];
+
+// State Management
+let currentPage = 0; 
+const url = new URL(window.location.href);
+
+// --- Initialization ---
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderDynamicContainers();
+  initFromURL();
+  setupEventListeners();
+  loadAllMarkdown();
+});
+
+function initFromURL() {
+  const params = url.searchParams.get('page');
+  if (params === 'nav') {
+    currentPage = 'nav';
+  } else if (params !== null) {
+    currentPage = parseInt(params, 10);
+  }
+  navigateToPage(currentPage, false);
 }
 
-// function to navigate to page based on the current page_counter
-function navigateToPageCount(page_counter) {
-  const landingTextContainer = document.getElementById('landing-text-container');
-  if (page_counter != 'nav') {
-    if (page_counter == 0) {
-      const next_carouselImage = document.querySelector(`.case-study-${page_counter}-image-container`);
-      landingTextContainer.classList.remove('fade-in');
-      landingTextContainer.classList.add('hidden');
-      url.searchParams.set('page', page_counter);
-      window.history.pushState(null, '', url.toString());
-      console.log("page counter: ", page_counter);
-    
-      setTimeout(() => {
-        next_carouselImage.classList.add('fade-in');
-        next_carouselImage.classList.remove('hidden');
-        next_carouselImage.classList.remove('fade-out');
-      }, 0.1);
+// --- Rendering ---
 
-    } else {
-      const next_carouselImage = document.querySelector(`#case-study-${page_counter}-image-container`);
-      const next_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
-      landingTextContainer.classList.remove('fade-in');
-      landingTextContainer.classList.add('hidden');
-      url.searchParams.set('page', page_counter);
-      window.history.pushState(null, '', url.toString());
-      console.log("page counter: ", page_counter);
-    
-      setTimeout(() => {
-        next_carouselImage.classList.add('fade-in');
-        next_carouselText.classList.add('fade-in');
-        next_carouselImage.classList.remove('hidden');
-        next_carouselText.classList.remove('hidden');
-        next_carouselImage.classList.remove('fade-out');
-        next_carouselText.classList.remove('fade-out');
-      }, 0.1);
-      
-    }
-
-  } else {
-    const landingTextContainer = document.getElementById('landing-text-container');
-    const contents_container = document.getElementById('contents-text-container');
-    const prevButton = document.getElementById('previous-button');
-    const nextButton = document.getElementById('next-button');
-    const navButton = document.getElementById('nav-button');
-    landingTextContainer.classList.remove('fade-in');
-    landingTextContainer.classList.add('hidden');
+function renderDynamicContainers() {
+  const gridContainer = document.querySelector('.grid-container');
+  const contentsContainer = document.getElementById('contents-text-container');
   
-    setTimeout(() => {
-      contents_container.classList.remove('hidden');
-      contents_container.classList.add('fade-in');
-      contents_container.classList.remove('fade-out');
-      prevButton.classList.remove('fade-in');
-      prevButton.classList.add('fade-out');
-      nextButton.classList.remove('fade-in');
-      nextButton.classList.add('fade-out');
-      navButton.classList.remove('fade-in');
-      navButton.classList.add('fade-out');
-      
-      url.searchParams.set('page', page_counter);
-      window.history.pushState(null, '', url.toString());
-      console.log("page counter: ", page_counter)
-    }, 0.1);
-  }
+  CASE_STUDIES.forEach(study => {
+    // 1. Create Image Container
+    const imgContainer = document.createElement('div');
+    imgContainer.id = `case-study-${study.id}-image-container`;
+    imgContainer.className = 'grid-item column-2-4 carousel-image-container hidden';
+    
+    let mediaHTML = '';
+    if (study.type === 'pdf') {
+      mediaHTML = `<div class="carousel-image"><iframe class="pdf" src="${study.src}"></iframe></div>`;
+    } else {
+      mediaHTML = `<div class="carousel-image"><img src="${study.src}" alt="Case Study ${study.id}"></div>`;
+    }
+    
+    imgContainer.innerHTML = (study.caption ? `<figcaption>${study.caption}</figcaption>` : '') + mediaHTML;
+    gridContainer.appendChild(imgContainer);
+
+    // 2. Create Text Container
+    const textContainer = document.createElement('div');
+    textContainer.id = `case-study-${study.id}-text-container`;
+    textContainer.className = 'grid-item column-5-8 carousel-text-container hidden';
+    textContainer.innerHTML = `<div id="case-study-${study.id}-text" class="scrollable-text" data-markdown="${study.markdown}"></div>`;
+    gridContainer.appendChild(textContainer);
+
+    // 3. Create Contents Entry
+    const contentEntry = document.createElement('div');
+    contentEntry.id = `contents-case-study-${study.id}`;
+    contentEntry.className = 'contents-entry';
+    contentEntry.setAttribute('data-markdown', study.markdown);
+    contentEntry.addEventListener('click', () => navigateToPage(study.id));
+    contentsContainer.appendChild(contentEntry);
+  });
 }
 
-// Function to fetch and render a Markdown file
-async function loadMarkdown_full(filePath, elementId) {
-    try {
-      const response = await fetch(filePath);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const text = await response.text();
-      document.getElementById(elementId).innerHTML = marked.parse(text);
-    } catch (error) {
-      console.error(`Error loading ${filePath}:`, error);
-      document.getElementById(elementId).innerHTML = "<p>Sorry, the content couldn't be loaded.</p>";
-    }
+async function loadAllMarkdown() {
+  const landingText = document.getElementById('landing-text');
+  if (landingText) {
+    loadMarkdownFile(`writeups/${landingText.getAttribute('data-markdown')}`, 'landing-text', true);
   }
 
-async function loadMarkdown_title(filePath, elementId) {
+  CASE_STUDIES.forEach(study => {
+    loadMarkdownFile(`writeups/${study.markdown}`, `case-study-${study.id}-text`, true);
+    loadMarkdownFile(`writeups/${study.markdown}`, `contents-case-study-${study.id}`, false);
+  });
+}
+
+async function loadMarkdownFile(filePath, elementId, isFull) {
   try {
     const response = await fetch(filePath);
-    if (!response.ok) {
-      throw new Error (`HTTP error! status: ${response.status}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const text = await response.text();
+    const element = document.getElementById(elementId);
+    
+    if (isFull) {
+      element.innerHTML = marked.parse(text);
+    } else {
+      const firstLine = text.split('\n').find(line => line.trim() !== '') || '';
+      element.innerHTML = marked.parse(firstLine);
     }
-    const text = await response.text()
-
-    const lines = text.split('\n');
-    let firstLine = '';
-    for (let line of lines) {
-      if (line.trim() !== '') {
-        firstLine = line;
-        break;
-      }
-    }
-
-    document.getElementById(elementId).innerHTML = marked.parse(firstLine);
   } catch (error) {
     console.error(`Error loading ${filePath}:`, error);
-    document.getElementById(elementId).innerHTML = "<p>Sorry, the content couldn't be loaded.</p>";
   }
 }
 
+// --- Navigation Logic ---
 
-const nextButton = document.getElementById('next-button');
-if (nextButton) {
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowRight') {
-      nextButton.click();
+function navigateToPage(page, updateHistory = true) {
+  const landing = document.getElementById('landing-text-container');
+  const contents = document.getElementById('contents-text-container');
+  const navBtn = document.getElementById('nav-button');
+  const prevBtn = document.getElementById('previous-button');
+  const nextBtn = document.getElementById('next-button');
+
+  // Identify target elements for the new page
+  let targets = [];
+  if (page === 0) {
+    targets = [landing, navBtn, prevBtn, nextBtn];
+  } else if (page === 'nav') {
+    targets = [contents];
+  } else {
+    targets = [
+      document.getElementById(`case-study-${page}-image-container`),
+      document.getElementById(`case-study-${page}-text-container`),
+      navBtn, prevBtn, nextBtn
+    ];
+  }
+
+  // Get all elements that could be visible
+  const allElements = [
+    landing, contents, navBtn, prevBtn, nextBtn,
+    ...document.querySelectorAll('.carousel-image-container, .carousel-text-container')
+  ];
+
+  // Apply transitions
+  allElements.forEach(el => {
+    if (!el) return;
+    if (targets.includes(el)) {
+      el.classList.remove('hidden', 'fade-out');
+      el.classList.add('fade-in');
+    } else {
+      el.classList.remove('fade-in');
+      el.classList.add('fade-out');
     }
-  };
-  document.addEventListener('keydown', handleKeyDown);
-  console.log('Added keydown event listener for right arrow key.');
-} else {
-  console.error('Button with id "next-button" not found.');
-} 
-
-// function for the 'next' button
-function initializeNextButton() {
-  const nextButton = document.getElementById('next-button');
-  
-  if (nextButton) { 
-    nextButton.addEventListener('click', () => {
-      const landingTextContainer = document.getElementById('landing-text-container');
-      const current_carouselImage = document.querySelector(`#case-study-${page_counter}-image-container`);
-      const current_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
-      const next_carouselImage = document.querySelector(`#case-study-${page_counter+1}-image-container`);
-      const next_carouselText = document.querySelector(`#case-study-${page_counter+1}-text-container`);
-      
-      
-      setTimeout(() => {
-        if (page_counter != 0) {
-          if (page_counter != page_limit) {
-            current_carouselImage.classList.remove('fade-in');
-            current_carouselText.classList.remove('fade-in');
-            current_carouselImage.classList.add('fade-out');
-            current_carouselText.classList.add('fade-out');
-            next_carouselImage.classList.add('fade-in');
-            next_carouselText.classList.add('fade-in');
-            next_carouselImage.classList.remove('hidden');
-            next_carouselText.classList.remove('hidden');
-            next_carouselImage.classList.remove('fade-out');
-            next_carouselText.classList.remove('fade-out');
-            page_counter += 1;
-          } else {
-            current_carouselImage.classList.remove('fade-in');
-            current_carouselText.classList.remove('fade-in');
-            current_carouselImage.classList.add('fade-out');
-            current_carouselText.classList.add('fade-out');
-            landingTextContainer.classList.add('fade-in');
-            landingTextContainer.classList.remove('hidden');
-            landingTextContainer.classList.remove('fade-out');
-            page_counter = 0;
-          }
-        } else {
-          landingTextContainer.classList.add('fade-out');
-          landingTextContainer.classList.remove('fade-in');
-          landingTextContainer.classList.add('hidden');
-          next_carouselImage.classList.add('fade-in');
-          next_carouselText.classList.add('fade-in');
-          next_carouselImage.classList.remove('hidden');
-          next_carouselText.classList.remove('hidden');
-          next_carouselImage.classList.remove('fade-out');
-          next_carouselText.classList.remove('fade-out');
-          page_counter += 1;
-        }
-        url.searchParams.set('page', page_counter);
-        window.history.pushState(null, '', url.toString());
-        console.log("page counter: ", page_counter)
-      }, 1);
-    })
-  }
-}
-
-// function for the 'previous' button
-const prevButton = document.getElementById('previous-button');
-if (prevButton) {
-const handleKeyDown = (event) => {
-  if (event.key === 'ArrowLeft') {
-    prevButton.click();
-  }
-};
-document.addEventListener('keydown', handleKeyDown);
-console.log('Added keydown event listener for right arrow key.');
-} else {
-console.error('Button with id "previous-button" not found.');
-} 
-
-function initializePrevButton() {
-  const prevButton = document.getElementById('previous-button');
-  
-  if (prevButton) {
-    prevButton.addEventListener('click', () => {
-      const landingTextContainer = document.getElementById('landing-text-container');
-      const current_carouselImage = document.querySelector(`#case-study-${page_counter}-image-container`);
-      const current_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
-      const prev_carouselImage = document.querySelector(`#case-study-${page_counter-1}-image-container`);
-      const prev_carouselText = document.querySelector(`#case-study-${page_counter-1}-text-container`);
-      const _page_limit_carouselImage = document.querySelector(`#case-study-${page_limit}-image-container`);
-      const _page_limit_carouselText = document.querySelector(`#case-study-${page_limit}-text-container`);
-      
-      
-      setTimeout(() => {
-        if (page_counter != 0) {
-          if (page_counter != 1) {
-            current_carouselImage.classList.remove('fade-in');
-            current_carouselText.classList.remove('fade-in');
-            current_carouselImage.classList.add('fade-out');
-            current_carouselText.classList.add('fade-out');
-            prev_carouselImage.classList.add('fade-in');
-            prev_carouselText.classList.add('fade-in');
-            prev_carouselImage.classList.remove('hidden');
-            prev_carouselText.classList.remove('hidden');
-            prev_carouselImage.classList.remove('fade-out');
-            prev_carouselText.classList.remove('fade-out');
-            page_counter -= 1;
-          } else {
-            current_carouselImage.classList.remove('fade-in');
-            current_carouselText.classList.remove('fade-in');
-            current_carouselImage.classList.add('fade-out');
-            current_carouselText.classList.add('fade-out');
-            landingTextContainer.classList.add('fade-in');
-            landingTextContainer.classList.remove('hidden');
-            landingTextContainer.classList.remove('fade-out');
-            page_counter = 0;
-          }
-        } else {
-          landingTextContainer.classList.add('fade-out');
-          landingTextContainer.classList.remove('fade-in');
-          landingTextContainer.classList.add('hidden');
-          _page_limit_carouselImage.classList.add('fade-in');
-          _page_limit_carouselText.classList.add('fade-in');
-          _page_limit_carouselImage.classList.remove('hidden');
-          _page_limit_carouselText.classList.remove('hidden');
-          _page_limit_carouselImage.classList.remove('fade-out');
-          _page_limit_carouselText.classList.remove('fade-out');
-          page_counter = page_limit;
-        }
-        url.searchParams.set('page', page_counter);
-        window.history.pushState(null, '', url.toString());
-        console.log("page counter: ", page_counter)
-      }, 1);
-    })
-  }
-}
-   
-// functions for 'navigation' button
-function initializeNavButton() {
-  const navButton = document.getElementById('nav-button');
-  
-  if (navButton) {
-    navButton.addEventListener('click', () => {
-      const landingTextContainer = document.getElementById('landing-text-container');
-      const current_carouselImage = document.querySelector(`#case-study-${page_counter}-image-container`);
-      const current_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
-      const contents_container = document.getElementById('contents-text-container')
-      const prevButton = document.getElementById('previous-button')
-      const nextButton = document.getElementById('next-button')
-
-      
-      setTimeout(() => {
-        if (page_counter != 'nav') {
-            if (page_counter == 0) {
-              landingTextContainer.classList.remove('fade-in');
-              landingTextContainer.classList.add('fade-out');
-            } else {
-              current_carouselImage.classList.remove('fade-in');
-              current_carouselText.classList.remove('fade-in');
-              current_carouselImage.classList.add('fade-out');
-              current_carouselText.classList.add('fade-out');
-            }
-            contents_container.classList.remove('hidden');
-            contents_container.classList.add('fade-in');
-            contents_container.classList.remove('fade-out');
-            prevButton.classList.remove('fade-in');
-            prevButton.classList.add('fade-out');
-            nextButton.classList.remove('fade-in');
-            nextButton.classList.add('fade-out');
-            navButton.classList.remove('fade-in');
-            navButton.classList.add('fade-out');
-            page_counter ='nav';
-        } else {
-          
-        }
-        url.searchParams.set('page', page_counter);
-        window.history.pushState(null, '', url.toString());
-        console.log("page counter: ", page_counter)
-      }, 1);
-    })
-  }
-}
-
-function initializeSingleNavButton(num) {
-  const pageButton = document.getElementById(`contents-case-study-${num}`)
-  const navButton = document.getElementById('nav-button');
-  const prevButton = document.getElementById('previous-button')
-  const nextButton = document.getElementById('next-button')
-
-
-  if (pageButton) {
-    pageButton.addEventListener('click', () => {
-      const carouselImage =  document.querySelector(`#case-study-${num}-image-container`);
-      const carouselText =  document.querySelector(`#case-study-${num}-text-container`);
-      const navPage = document.getElementById('contents-text-container');
-      setTimeout(() => {
-        navPage.classList.remove('fade-in');
-        navPage.classList.add('fade-out');
-        navPage.classList.add('hidden');
-
-        carouselImage.classList.remove('fade-out');
-        carouselText.classList.remove('fade-out');
-        carouselImage.classList.add('fade-in');
-        carouselText.classList.add('fade-in');
-
-        navButton.classList.remove('fade-out');
-        navButton.classList.add('fade-in');
-        nextButton.classList.remove('fade-out');
-        nextButton.classList.add('fade-in');
-        prevButton.classList.remove('fade-out');
-        prevButton.classList.add('fade-in');
-
-        navButton.classList.remove('fade-in');
-
-
-        page_counter = num;
-        url.searchParams.set('page', page_counter);
-        window.history.pushState(null, '', url.toString());
-        console.log("page counter: ", page_counter)
-
-      }, 1)
-
-    })
-
-  }
-}
-
-// function for button on title in the header
-function initializeIndexButton() {
-  const indexButton = document.getElementById('index-page-button')
-
-  if (indexButton) {
-    indexButton.addEventListener('click', () => {
-      const landingTextContainer = document.getElementById('landing-text-container');
-      if (page_counter != 'nav') {
-        if (page_counter != 0) {
-          const current_carouselImage = document.querySelector(`#case-study-${page_counter}-image-container`);
-          const current_carouselText = document.querySelector(`#case-study-${page_counter}-text-container`);
-
-          setTimeout(() => {
-            current_carouselImage.classList.remove('fade-in');
-            current_carouselText.classList.remove('fade-in');
-            current_carouselImage.classList.add('fade-out');
-            current_carouselText.classList.add('fade-out');
-            landingTextContainer.classList.remove('fade-out');
-            landingTextContainer.classList.add('fade-in');
-            landingTextContainer.classList.remove('hidden')
-            page_counter = 0
-            url.searchParams.set('page', page_counter);
-            window.history.pushState(null, '', url.toString());
-            console.log("page counter: ", page_counter)
-
-
-
-          }, 1);
-
-        }
-
-      } else {
-        const navPage = document.getElementById('contents-text-container');
-        const navButton = document.getElementById('nav-button');
-        const prevButton = document.getElementById('previous-button')
-        const nextButton = document.getElementById('next-button')
-        setTimeout(() => {
-          navPage.classList.remove('fade-in');
-          navPage.classList.add('fade-out');
-          landingTextContainer.classList.remove('fade-out');
-          landingTextContainer.classList.add('fade-in');
-          landingTextContainer.classList.remove('hidden');
-          navButton.classList.remove('fade-out');
-          navButton.classList.add('fade-in');
-          nextButton.classList.remove('fade-out');
-          nextButton.classList.add('fade-in');
-          prevButton.classList.remove('fade-out');
-          prevButton.classList.add('fade-in');
-          page_counter = 0
-          url.searchParams.set('page', page_counter);
-          window.history.pushState(null, '', url.toString());
-          console.log("page counter: ", page_counter)
-          
-
-        }, 1);
-      }
-    })
-  }
-}
-
-// scroll listener, deprecated
-function initializeScrollListeners() {
-  const scrollableTexts = document.querySelectorAll('.scrollable-text');
-  
-  scrollableTexts.forEach((scrollableText) => {
-    const parentContainer = scrollableText.parentElement; // .scrollable-container
-          
-    scrollableText.addEventListener('scroll', () => {
-      const { scrollTop, scrollHeight, clientHeight } = scrollableText;
-      
-      if (scrollTop + clientHeight >= scrollHeight - 5) { // Buffer of 5px
-        parentContainer.classList.add('at-bottom');
-      } else {
-        parentContainer.classList.remove('at-bottom');
-      }
-    });
-    
-    // Initialize the state on page load
-    scrollableText.dispatchEvent(new Event('scroll'));
-  });
-}
-
-// compile
-document.addEventListener("DOMContentLoaded", () => {
-  const scrollableTexts = document.querySelectorAll('.scrollable-text');
-  scrollableTexts.forEach((scrollableText) => {
-    const markdownFile = `writeups/${scrollableText.getAttribute('data-markdown')}`;
-    loadMarkdown_full(markdownFile, scrollableText.id);
   });
 
-  const contentsEntries = document.querySelectorAll('.contents-entry');
-  contentsEntries.forEach((entry) => {
-    const markdownFile = `writeups/${entry.getAttribute('data-markdown')}`;
-    loadMarkdown_title(markdownFile, entry.id)
-  })
+  currentPage = page;
+  if (updateHistory) {
+    url.searchParams.set('page', currentPage);
+    window.history.pushState(null, '', url.toString());
+  }
+}
 
-  initializeScrollListeners();
-  initializeNextButton();
-  initializePrevButton();
-  initializeNavButton();
-  initializeIndexButton();
-  for (let index = 0; index < page_limit+1; index++) {
-    initializeSingleNavButton(index)
-    
-  };
-});
+function setupEventListeners() {
+  document.getElementById('next-button').addEventListener('click', () => {
+    if (currentPage === 'nav') return;
+    let next = (typeof currentPage === 'number' ? currentPage + 1 : 1);
+    if (next > CASE_STUDIES.length) next = 0;
+    navigateToPage(next);
+  });
+
+  document.getElementById('previous-button').addEventListener('click', () => {
+    if (currentPage === 'nav') return;
+    let prev = (typeof currentPage === 'number' ? currentPage - 1 : CASE_STUDIES.length);
+    if (prev < 0) prev = CASE_STUDIES.length;
+    navigateToPage(prev);
+  });
+
+  document.getElementById('nav-button').addEventListener('click', () => navigateToPage('nav'));
+  
+  document.getElementById('index-page-button').addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateToPage(0);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') document.getElementById('next-button').click();
+    if (e.key === 'ArrowLeft') document.getElementById('previous-button').click();
+  });
+}
