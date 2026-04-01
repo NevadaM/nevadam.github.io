@@ -106,8 +106,8 @@
   </main>
 
   <script>
-    // Make the total number of studies available to frontend JS
-    window.TOTAL_PAGES = {{ portfolio | length }};
+    // Make the ordered IDs available to frontend JS for sequential navigation
+    window.PAGE_ORDER = [0, {% for study in portfolio %}{{ study.id }}{% if not loop.last %}, {% endif %}{% endfor %}];
   </script>
   <script src="js/main.js"></script>
 </body>

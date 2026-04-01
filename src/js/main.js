@@ -70,16 +70,18 @@ function navigateToPage(page, updateHistory = true) {
 function setupEventListeners() {
   document.getElementById('next-button').addEventListener('click', () => {
     if (currentPage === 'nav') return;
-    let next = (typeof currentPage === 'number' ? currentPage + 1 : 1);
-    if (next > window.TOTAL_PAGES) next = 0;
-    navigateToPage(next);
+    const currentIndex = window.PAGE_ORDER.indexOf(currentPage);
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= window.PAGE_ORDER.length) nextIndex = 0;
+    navigateToPage(window.PAGE_ORDER[nextIndex]);
   });
 
   document.getElementById('previous-button').addEventListener('click', () => {
     if (currentPage === 'nav') return;
-    let prev = (typeof currentPage === 'number' ? currentPage - 1 : window.TOTAL_PAGES);
-    if (prev < 0) prev = window.TOTAL_PAGES;
-    navigateToPage(prev);
+    const currentIndex = window.PAGE_ORDER.indexOf(currentPage);
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) prevIndex = window.PAGE_ORDER.length - 1;
+    navigateToPage(window.PAGE_ORDER[prevIndex]);
   });
 
   document.getElementById('nav-button').addEventListener('click', () => navigateToPage('nav'));
