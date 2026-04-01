@@ -546,140 +546,35 @@ table {
   transform: scale(1.01);
 }
 
-#contents-case-study-1 {
-  grid-column: 1;
-  grid-row: 1;
-  background-image: url("../images/case_study_images/casestudy1.avif");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-2 {
-  grid-column: 2;
-  grid-row: 1;
-  background-image: url("../images/case_study_images/casestudy2.avif");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-3 {
-  grid-column: 3;
-  grid-row: 1;
-  background-image: url("../images/case_study_images/casestudy3.png");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-4 {
-  grid-column: 4;
-  grid-row: 1;
-  background-image: url("../images/case_study_images/casestudy4.png");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-5 {
-  grid-column: 5;
-  grid-row: 1;
-  background-image: url("../images/case_study_images/casestudy5.png");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-6 {
-  grid-column: 1;
-  grid-row: 2;
-  background-image: url("../images/case_study_images/casestudy6.png");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-7 {
-  grid-column: 2;
-  grid-row: 2;
-  background-image: url("../images/case_study_images/casestudy7.png");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-8 {
-  grid-column: 3;
-  grid-row: 2;
-  background-image: url("../images/case_study_images/casestudy8.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-9 {
-  grid-column: 4;
-  grid-row: 2;
-  background-image: url("../images/case_study_images/casestudy9.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-10 {
-  grid-column: 5;
-  grid-row: 2;
-  background-image: url("../images/case_study_images/casestudy10.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-11 {
-  grid-column: 1;
-  grid-row: 3;
-  background-image: url("../images/case_study_images/casestudy11.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-12 {
-  grid-column: 2;
-  grid-row: 3;
-  background-image: url("../images/case_study_images/casestudy12.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-13 {
-  grid-column: 3;
-  grid-row: 3;
-  background-image: url("../images/case_study_images/casestudy13.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-14 {
-  grid-column: 4;
-  grid-row: 3;
-  background-image: url("../images/case_study_images/casestudy14.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
 
-#contents-case-study-15 {
-  grid-column: 5;
-  grid-row: 3;
-  background-image: url("../images/case_study_images/casestudy15.jpg");
-  background-color: var(--dark-slate-gray);
-  background-size: cover;
-  background-blend-mode: soft-light;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* PDF viewers */
 iframe.pdf {

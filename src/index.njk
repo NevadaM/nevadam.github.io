@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="tyAw6yIJvBlmy4uX1iykym9bDpgcKFkSlUl1OT1GucM" />
+  <link rel="icon" type="image/png" href="images/other_images/me.png" sizes="32x32">
+  <title>Neil Majithia - Portfolio</title>
+  <meta name="description" content="My portfolio, a showcase of the individual and organisational projects I've worked on over the last few years.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Inline the background images for the contents entry tiles dynamically */
+    {% for study in portfolio %}
+      #contents-case-study-{{ study.id }} {
+        background-image: url("{{ study.bg }}");
+        background-color: var(--dark-slate-gray);
+        background-size: cover;
+        background-blend-mode: soft-light;
+      }
+    {% endfor %}
+  </style>
+</head>
+<body>
+  <!-- Header Start -->
+  <header class="site-header">
+    <div class="header-left">
+        <a href="#" class="logo2website">
+            <img src="images/other_images/me.png" alt="profilepic" class="logo">
+        </a>
+        <h1 class="landing-site-title"><a href="#" id="index-page-button">Neil Majithia</a></h1>
+    </div>
+        
+    <div class="header-right">
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html?page=0">Portfolio</a></li>
+                <li><a href="resume.html">Résumé</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <main class="main-content">
+    <div class="grid-container">
+        <!-- Columns 3-6: Landing Text -->
+        <div class="grid-item column-3-6 case-study-0-image-container fade-in" id="landing-text-container">
+            <div id="landing-text" class="scrollable-text">
+                <!-- Eleventy shortcode: rendered during build -->
+                {% renderMarkdown "landing-text.md" %}
+            </div>
+        </div>
+
+        <!-- Columns 2-7: Contents (Pre-rendered via Eleventy) -->
+        <div class="grid-item column-2-7 hidden" id="contents-text-container">
+            {% for study in portfolio %}
+            <div class="contents-entry" id="contents-case-study-{{ study.id }}" data-id="{{ study.id }}">
+                {% renderMarkdownTitle study.markdown %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Case Study Containers (Pre-rendered via Eleventy) -->
+        {% for study in portfolio %}
+          <!-- Image/Media Container -->
+          <div id="case-study-{{ study.id }}-image-container" class="grid-item column-2-4 carousel-image-container hidden">
+            {% if study.caption %}
+              <figcaption>{{ study.caption }}</figcaption>
+            {% endif %}
+            <div class="carousel-image">
+              {% if study.type == 'pdf' %}
+                <iframe class="pdf" src="{{ study.src }}"></iframe>
+              {% else %}
+                <img src="{{ study.src }}" alt="Case Study {{ study.id }}">
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Text Container -->
+          <div id="case-study-{{ study.id }}-text-container" class="grid-item column-5-8 carousel-text-container hidden">
+            <div id="case-study-{{ study.id }}-text" class="scrollable-text">
+                {% renderMarkdown study.markdown %}
+            </div>
+          </div>
+        {% endfor %}
+        
+        <!-- Column 7 Placeholder -->
+        <div class="grid-item column-7"></div>
+        
+        <!-- Navigation Buttons -->
+        <div class="grid-item column-1">
+            <div class="button-container">
+                <button id="previous-button" class="previous-button">‹</button>
+            </div>
+        </div>
+        <div class="grid-item column-8">
+            <div class="button-container">
+                <button id="next-button" class="next-button">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Navigate Button -->
+    <button id="nav-button" class="nav-button">&#9781 Navigate</button>
+  </main>
+
+  <script>
+    // Make the total number of studies available to frontend JS
+    window.TOTAL_PAGES = {{ portfolio | length }};
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

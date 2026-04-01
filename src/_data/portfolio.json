@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "type": "pdf",
+    "src": "https://theodi.cdn.ngo/media/documents/ODI_Report_-_Trust_and_transparency_in_privacy-enhancing_technologies.pdf#toolbar=1&zoom=50",
+    "markdown": "case_studies/casestudy1.md",
+    "caption": "PDF viewer",
+    "bg": "images/case_study_images/casestudy1.avif"
+  },
+  {
+    "id": 2,
+    "type": "pdf",
+    "src": "https://theodi.cdn.ngo/media/documents/UK_government_as_data_provider_for_AI.pdf#toolbar=1&zoom=50",
+    "markdown": "case_studies/casestudy2.md",
+    "caption": "PDF viewer",
+    "bg": "images/case_study_images/casestudy2.avif"
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "src": "images/case_study_images/casestudy3.png",
+    "markdown": "case_studies/casestudy3.md",
+    "bg": "images/case_study_images/casestudy3.png"
+  },
+  {
+    "id": 4,
+    "type": "image",
+    "src": "images/case_study_images/casestudy4.png",
+    "markdown": "case_studies/casestudy4.md",
+    "bg": "images/case_study_images/casestudy4.png"
+  },
+  {
+    "id": 5,
+    "type": "image",
+    "src": "images/case_study_images/casestudy5.png",
+    "markdown": "case_studies/casestudy5.md",
+    "bg": "images/case_study_images/casestudy5.png"
+  },
+  {
+    "id": 6,
+    "type": "image",
+    "src": "images/case_study_images/casestudy6.png",
+    "markdown": "case_studies/casestudy6.md",
+    "bg": "images/case_study_images/casestudy6.png"
+  },
+  {
+    "id": 7,
+    "type": "image",
+    "src": "images/case_study_images/casestudy7.png",
+    "markdown": "case_studies/casestudy7.md",
+    "bg": "images/case_study_images/casestudy7.png"
+  },
+  {
+    "id": 8,
+    "type": "image",
+    "src": "images/case_study_images/casestudy1.avif",
+    "markdown": "case_studies/casestudy8.md",
+    "caption": "CitizenQuery-UK",
+    "bg": "images/case_study_images/casestudy8.jpg"
+  },
+  {
+    "id": 9,
+    "type": "image",
+    "src": "images/case_study_images/casestudy2.avif",
+    "markdown": "case_studies/casestudy9.md",
+    "caption": "AI-Ready Data",
+    "bg": "images/case_study_images/casestudy9.jpg"
+  },
+  {
+    "id": 10,
+    "type": "image",
+    "src": "images/case_study_images/casestudy3.png",
+    "markdown": "case_studies/casestudy10.md",
+    "caption": "Croissant Standard",
+    "bg": "images/case_study_images/casestudy10.jpg"
+  }
+]
